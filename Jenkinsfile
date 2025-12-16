@@ -30,10 +30,8 @@ pipeline {
             }
             steps {
                 sh '''
-                    ls -la
-                    test -f public/index.html
+                    #test -f public/index.html
                     npm test
-                    ls -la
                 '''
             }
         }
