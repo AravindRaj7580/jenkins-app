@@ -27,7 +27,7 @@ pipeline {
             }
         }
 
-        stage('Deploy - prod') {
+        stage('Approval') {
             steps {
                 timeout(2) {
                     input 'i\'m alowing to deploy the application!'
