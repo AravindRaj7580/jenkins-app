@@ -7,7 +7,6 @@ pipeline {
     }
 
     stages {
-
         stage('Docker') {
             steps {
                 sh 'docker build -t my-playwiright .'
@@ -51,16 +50,15 @@ pipeline {
             }
             steps {
                 sh '''
-                   npm install netlify-cli@20.1.1 node-jq
-                   node_modules/.bin/netlify --version
+                   netlify --version
                    echo "Deploying to production. Site ID: $NETLIFY_SITE_ID"
-                   node_modules/.bin/netlify status
-                   node_modules/.bin/netlify deploy \
+                   netlify status
+                   netlify deploy \
                       --dir=build \
                       --site=$NETLIFY_SITE_ID \
                       --auth=$NETLIFY_AUTH_TOKEN \
                       --json > deploy-output.json
-                   node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json
+                   node-jq -r '.deploy_url' deploy-output.json
                 '''
             }
         }
@@ -74,11 +72,10 @@ pipeline {
             }
             steps {
                 sh '''
-                   npm install netlify-cli@20.1.1
-                   node_modules/.bin/netlify --version
+                   netlify --version
                    echo "Deploying to production. Site ID: $NETLIFY_SITE_ID"
-                   node_modules/.bin/netlify status
-                   node_modules/.bin/netlify deploy \
+                   netlify status
+                   netlify deploy \
                       --dir=build \
                       --prod \
                       --site=$NETLIFY_SITE_ID \
