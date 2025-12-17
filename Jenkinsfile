@@ -27,6 +27,14 @@ pipeline {
             }
         }
 
+        stage('Deploy - prod') {
+            steps {
+                timeout(2) {
+                    input 'i\'m alowing to deploy the application!'
+                }
+            }
+        }
+
         stage('Deploy - staging') {
             agent {
                 docker {
