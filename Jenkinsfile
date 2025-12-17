@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Docker') {
             steps {
-                sh 'docker build -t my-playwiright .'
+                sh 'docker build -t my-playwright .'
             }
         }
 
@@ -44,7 +44,7 @@ pipeline {
         stage('Deploy - staging') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'my-playwright'
                     reuseNode true
                 }
             }
@@ -66,7 +66,7 @@ pipeline {
         stage('Deploy - prod') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'my-playwright'
                     reuseNode true
                 }
             }
