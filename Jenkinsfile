@@ -16,7 +16,6 @@ pipeline {
             }
             steps {
                 sh '''
-                    echo "Hello World"
                     ls -la
                     node --version
                     npm --version
@@ -30,7 +29,7 @@ pipeline {
         stage('Buid docker image') {
             agent {
                 docker {
-                    image 'amazon/aws-cli'
+                    image 'docker:26-cli'
                     reuseNode true
                     args "-v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
                 }
