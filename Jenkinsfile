@@ -15,11 +15,16 @@ pipeline {
                     args "--entrypoint=''"
                 }
             }
+            environment {
+                AWS_S3_BUCKET = 'a6f6fa8e-131d-4c56-ab81-5870f68cfc4c'
+            }
             steps {
                 withCredentials([usernamePassword(credentialsId: '2f9e57d8-8788-49e8-8bcd-4b0a0ccee04b', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                     sh '''
                         aws --version
                         aws s3 ls
+                        echo "Hello World!" > index.html
+                        aws s3 cp index.html s3://$AWS_S3_BUCKET/index.html
                     '''
                 }
                 
