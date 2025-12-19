@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_DEFAULT_RESION = 'ap-southeast-2'
+        AWS_DEFAULT_REGION = 'ap-southeast-2'
     }
 
     stages {
