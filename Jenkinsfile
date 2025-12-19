@@ -16,7 +16,7 @@ pipeline {
                 }
             }
             environment {
-                AWS_S3_BUCKET = 'a6f6fa8e-131d-4c56-ab81-5870f68cfc4c'
+                AWS_S3_BUCKET = 'jenkins-191220251011 '
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: '2f9e57d8-8788-49e8-8bcd-4b0a0ccee04b', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
